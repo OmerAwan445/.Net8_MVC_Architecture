@@ -1,0 +1,32 @@
+﻿@using Bulkyweb.Models
+@model List<Category>
+
+<div>
+<h1>Category Items</h1>
+
+    <table class="mt-4 table table-bordered table-striped">
+        <thead>
+        <tr>
+           @foreach( var obj in typeof(Category).GetProperties())
+           {
+           <th>
+               @obj.Name
+           </th>
+           }
+        </tr>
+        </thead>
+        <tbody
+            @foreach(var obj in Model)
+            {
+            <tr>
+            @foreach (var propertyName in typeof(Category).GetProperties())
+            {
+              <td>
+                     @propertyName.GetValue(obj)
+              </td>
+            }
+              </tr>
+            }
+        </tbody>
+    </table>
+</div>
